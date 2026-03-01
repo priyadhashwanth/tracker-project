@@ -85,9 +85,7 @@ const totalSpent = expenses.reduce((sum, exp) => sum + Number(exp.amount), 0);
         />
       </div>
 
-      
-
-      
+      {/* category */}    
 
 <div className="mb-6 grid grid-cols-1 md:grid-cols-5 gap-4">
   {categoryTotals.map((ct) => (
@@ -101,7 +99,7 @@ const totalSpent = expenses.reduce((sum, exp) => sum + Number(exp.amount), 0);
   ))}
 </div>
 
-
+{/* total spent */}    
 
 <h2 className="text-xl font-bold mb-4">
   Total Spent: ₹{totalSpent}
