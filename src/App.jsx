@@ -42,7 +42,7 @@ export default function App() {
     );
     setEditingExpense(null);
   };
-
+//spent amount calculation
   const categories = ["Food", "Travel", "Shopping", "Bills", "Other"];
 
 // Compute total per category
@@ -85,11 +85,9 @@ const totalSpent = expenses.reduce((sum, exp) => sum + Number(exp.amount), 0);
         />
       </div>
 
-      // spent amount
+      
 
-      const categories = ["Food", "Travel", "Shopping", "Bills", "Other"];
-
-// Compute total per category
+      
 
 <div className="mb-6 grid grid-cols-1 md:grid-cols-5 gap-4">
   {categoryTotals.map((ct) => (
@@ -103,7 +101,7 @@ const totalSpent = expenses.reduce((sum, exp) => sum + Number(exp.amount), 0);
   ))}
 </div>
 
-//total spent
+
 
 <h2 className="text-xl font-bold mb-4">
   Total Spent: ₹{totalSpent}
