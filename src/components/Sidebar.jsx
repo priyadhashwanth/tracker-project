@@ -1,20 +1,33 @@
- function Sidebar() {
+function Sidebar({ view, setView }) {
   return (
-    <div className="w-64 bg-indigo-600 text-white p-6">
-      <h2 className="text-2xl font-bold mb-6">Menu</h2>
+    <div className="w-60 bg-blue-700 text-white min-h-screen p-5">
 
-      <ul className="space-y-4">
-        <li className="hover:bg-indigo-500 p-2 rounded cursor-pointer">
-          Dashboard
-        </li>
-        <li className="hover:bg-indigo-500 p-2 rounded cursor-pointer">
+      <h2 className="text-xl font-bold mb-6">Menu</h2>
+
+      <ul className="space-y-3">
+
+        <li
+          onClick={() => setView("expenses")}
+          className={`cursor-pointer p-2 rounded ${
+            view === "expenses" ? "bg-blue-500" : ""
+          }`}
+        >
           Expenses
         </li>
-        <li className="hover:bg-indigo-500 p-2 rounded cursor-pointer">
+
+        <li
+          onClick={() => setView("reports")}
+          className={`cursor-pointer p-2 rounded ${
+            view === "reports" ? "bg-blue-500" : ""
+          }`}
+        >
           Reports
         </li>
+
       </ul>
+
     </div>
   );
 }
+
 export default Sidebar;

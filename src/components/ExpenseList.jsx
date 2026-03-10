@@ -1,34 +1,53 @@
 function ExpenseList({ expenses, deleteExpense, setEditingExpense }) {
-  
-  //sort by date
-  const sortedExpenses = [...expenses].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // sort by date (recent first)
+  const sortedExpenses = [...expenses].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
+  // show message if no expenses
+  if (sortedExpenses.length === 0) {
+    return (
+      <p className="text-center text-gray-500 mt-6">
+        No expenses added yet
+      </p>
+    );
+  }
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-4 mt-6">
       {sortedExpenses.map((exp) => (
         <div
           key={exp.id}
-          className="bg-white p-4 rounded-xl shadow flex justify-between items-center"
+          className="bg-white p-4 rounded-xl shadow flex justify-between items-center hover:shadow-md transition"
         >
+          {/* Expense Details */}
           <div>
-            <h3 className="font-bold">{exp.title}</h3>
-            <p className="text-gray-500">₹{exp.amount}</p>
+            <h3 className="font-bold text-lg">{exp.title}</h3>
+
+            <p className="text-gray-600">₹{exp.amount}</p>
+
             <p className="text-sm text-gray-400">
-              {exp.date} • <span className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-xs">{exp.category}</span>
+               {exp.date}
             </p>
+
+            <span className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-xs">
+              {exp.category}
+            </span>
           </div>
 
-          <div className="space-x-2">
+          {/* Buttons */}
+          <div className="flex gap-2">
             <button
               onClick={() => setEditingExpense(exp)}
-              className="bg-yellow-400 px-3 py-1 rounded"
+              className="bg-yellow-400 px-3 py-1 rounded hover:bg-yellow-500"
             >
               Edit
             </button>
 
             <button
               onClick={() => deleteExpense(exp.id)}
-              className="bg-red-500 text-white px-3 py-1 rounded"
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
             >
               Delete
             </button>
@@ -38,4 +57,5 @@ function ExpenseList({ expenses, deleteExpense, setEditingExpense }) {
     </div>
   );
 }
+
 export default ExpenseList;
